@@ -5,7 +5,7 @@
         <nuxt-link to="/about">About</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/items">Items</nuxt-link>
+        <nuxt-link to="/blog">Blog</nuxt-link>
       </li>
       <li>
         <nuxt-link to="/contact">Contact</nuxt-link>
