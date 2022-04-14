@@ -1,10 +1,10 @@
 <template>
-  <div class="home">HOME</div>
+  <footer class="footer">Footer</footer>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  name: 'AppFooter',
 }
 </script>
 
