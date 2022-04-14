@@ -1,14 +1,14 @@
 <template>
-  <nav class="navigation">
-    <ul>
-      <li>
-        <nuxt-link to="/about">About</nuxt-link>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__el">
+        <nuxt-link to="/about" class="nav__link">About</nuxt-link>
       </li>
-      <li>
-        <nuxt-link to="/blog">Blog</nuxt-link>
+      <li class="nav__el">
+        <nuxt-link to="/blog" class="nav__link">Blog</nuxt-link>
       </li>
-      <li>
-        <nuxt-link to="/contact">Contact</nuxt-link>
+      <li class="nav__el">
+        <nuxt-link to="/contact" class="nav__link">Contact</nuxt-link>
       </li>
     </ul>
   </nav>
@@ -20,4 +20,32 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss" scoped>
+.nav {
+  @apply mt-16;
+  @apply border-t border-b border-gray-900;
+
+  @screen tablet {
+    @apply py-2 mt-8;
+  }
+}
+
+.nav__el {
+  @apply inline-block;
+  @apply font-bold leading-none;
+
+  @screen mobile {
+    @apply block;
+  }
+}
+
+.nav__link {
+  @apply inline-block;
+  @apply py-4 pr-4 mb-0.5;
+  @apply no-underline;
+
+  @screen mobile {
+    @apply py-2 mb-0;
+  }
+}
+</style>
