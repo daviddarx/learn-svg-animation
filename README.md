@@ -1,4 +1,4 @@
-# nuxt
+# boilerplate-nuxtjs
 
 ## Build Setup
 
