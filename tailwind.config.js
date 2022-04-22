@@ -20,7 +20,6 @@ module.exports = {
       },
     },
     screens: {
-      tablet: { max: '1279px' },
       'desktop-2xl': { max: '1920px' },
       'desktop-xl': { max: '1440px' },
       desktop: { max: '1280px' },
