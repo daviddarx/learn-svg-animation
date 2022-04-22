@@ -12,7 +12,7 @@
 export default {
   name: 'BlogPage',
   async asyncData({ $content }) {
-    const posts = await $content('blog').fetch()
+    const posts = await $content('blog-posts').fetch()
 
     return {
       posts,
