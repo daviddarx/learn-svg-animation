@@ -18,7 +18,7 @@
 export default {
   name: 'BlogPage',
   async asyncData({ $content }) {
-    const posts = await $content('blog-posts').fetch()
+    const posts = await $content('blog-posts').sortBy('date', 'asc').fetch()
 
     return {
       posts,

@@ -21,13 +21,13 @@ export default {
 
     let [prev, next] = await $content('blog-posts')
       .only(['title', 'slug'])
-      .sortBy('createdAt', 'asc')
+      .sortBy('date', 'asc')
       .surround(params.slug)
       .fetch()
 
     const allPosts = await $content('blog-posts')
       .only(['title', 'slug'])
-      .sortBy('createdAt', 'asc')
+      .sortBy('date', 'asc')
       .fetch()
 
     if (!prev) {
