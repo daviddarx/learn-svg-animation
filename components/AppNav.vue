@@ -41,11 +41,16 @@ export default {
 
 .nav__link {
   @apply inline-block;
-  @apply py-4 pr-4 mb-0.5;
-  @apply no-underline;
+  @apply py-4 pr-4;
+  @apply no-underline uppercase tracking-wider;
 
   @screen mobile {
     @apply py-2 mb-0;
+  }
+
+  &.nuxt-link-exact-active,
+  &.nuxt-link-active {
+    @apply text-secondary-600;
   }
 }
 </style>
