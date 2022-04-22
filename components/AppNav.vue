@@ -1,5 +1,6 @@
 <template>
   <nav class="nav">
+    <h3 class="hidden">Main navigation</h3>
     <ul class="nav__list">
       <li class="nav__el">
         <nuxt-link to="/about" class="nav__link">About</nuxt-link>

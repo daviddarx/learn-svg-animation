@@ -1,6 +1,6 @@
 <template>
-  <article>
-    <h2>{{ post.title }}</h2>
+  <article class="blog-detail">
+    <h1>{{ post.title }}</h1>
     <p>{{ formatDate(post.date) }}</p>
     <p>{{ post.description }}</p>
     <nuxt-content :document="post" />

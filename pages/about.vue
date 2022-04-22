@@ -1,5 +1,7 @@
 <template>
-  <div class="about">ABOUT</div>
+  <article class="about">
+    <h1>About</h1>
+  </article>
 </template>
 
 <script>

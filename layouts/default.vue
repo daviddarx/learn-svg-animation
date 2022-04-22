@@ -1,11 +1,12 @@
 <template>
   <div class="website">
-    <div class="header">
+    <header class="header">
       <AppLogo />
       <AppNav />
-    </div>
-
-    <Nuxt class="content" />
+    </header>
+    <main class="content">
+      <Nuxt />
+    </main>
     <AppFooter class="footer" />
   </div>
 </template>

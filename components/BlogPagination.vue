@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <h2 class="hidden">Blog Pagination</h2>
     <p v-if="prev">
       Prev:
       <NuxtLink :to="{ name: $route.name, params: { slug: prev.slug } }">
