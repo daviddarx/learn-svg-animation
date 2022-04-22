@@ -13,9 +13,7 @@ export default {
   async asyncData({ $content, params, error }) {
     let post
     try {
-      post = await $content('blog-posts', params.slug).fetch()
-      // OR const article = await $content(`articles/${params.slug}`).fetch()
-      // Params part of nuxt context: https://nuxtjs.org/docs/internals-glossary/context/
+      post = await $content(`blog-posts/${params.slug}`).fetch() // params come from nuxt context
     } catch (e) {
       error({ message: 'Blog Post not found' })
     }
