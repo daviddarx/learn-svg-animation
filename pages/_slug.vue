@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <article>
     <h2>{{ post.title }}</h2>
+    <p>{{ formatDate(post.date) }}</p>
+    <p>{{ post.description }}</p>
     <nuxt-content :document="post" />
-  </div>
+  </article>
 </template>
 
 <script>
@@ -13,6 +15,7 @@ export default {
     try {
       post = await $content('blog', params.slug).fetch()
       // OR const article = await $content(`articles/${params.slug}`).fetch()
+      // Params part of nuxt context: https://nuxtjs.org/docs/internals-glossary/context/
     } catch (e) {
       error({ message: 'Blog Post not found' })
     }
@@ -20,6 +23,15 @@ export default {
     return {
       post,
     }
+  },
+  mounted() {
+    console.log('blog post content', this.post)
+  },
+  methods: {
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    },
   },
 }
 </script>
