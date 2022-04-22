@@ -1,5 +1,6 @@
 <template>
   <div class="website">
+    <BrowserWarning />
     <header class="header">
       <AppLogo />
       <AppNav />
