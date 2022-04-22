@@ -39,6 +39,7 @@ export default {
   build: {
     postcss: {
       plugins: {
+        'postcss-import': {},
         'tailwindcss/nesting': {},
       },
     },
