@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.sky,
-        secondary: colors.orange,
+        secondary: colors.green,
       },
       spacing: {
         '5vw': '5vw',
