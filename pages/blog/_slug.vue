@@ -13,7 +13,7 @@ export default {
   async asyncData({ $content, params, error }) {
     let post
     try {
-      post = await $content('blog', params.slug).fetch()
+      post = await $content('blog-posts', params.slug).fetch()
       // OR const article = await $content(`articles/${params.slug}`).fetch()
       // Params part of nuxt context: https://nuxtjs.org/docs/internals-glossary/context/
     } catch (e) {
@@ -26,12 +26,6 @@ export default {
   },
   mounted() {
     console.log('blog post content', this.post)
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
   },
 }
 </script>

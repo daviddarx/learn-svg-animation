@@ -1,10 +1,16 @@
 <template>
   <div class="blog">
     BLOG
-
-    <li v-for="post of posts" :key="post.slug">
-      <NuxtLink :to="post.slug">{{ post.title }}</NuxtLink>
-    </li>
+    <nav>
+      <ul>
+        <li v-for="post of posts" :key="post.slug">
+          <NuxtLink :to="'/blog/' + post.slug">
+            {{ post.title }}
+          </NuxtLink>
+          - {{ formatDate(post.date) }}
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
