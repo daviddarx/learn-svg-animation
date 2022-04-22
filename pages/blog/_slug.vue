@@ -4,6 +4,7 @@
     <p>{{ formatDate(post.date) }}</p>
     <p>{{ post.description }}</p>
     <nuxt-content :document="post" />
+    <BlogPagination :prev="prev" :next="next" />
   </article>
 </template>
 
@@ -18,12 +19,33 @@ export default {
       error({ message: 'Blog Post not found' })
     }
 
+    let [prev, next] = await $content('blog-posts')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
+
+    const allPosts = await $content('blog-posts')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .fetch()
+
+    if (!prev) {
+      prev = allPosts.pop()
+    }
+
+    if (!next) {
+      next = allPosts[0]
+    }
+
     return {
       post,
+      prev,
+      next,
     }
   },
   mounted() {
-    console.log('blog post content', this.post)
+    // console.log('blog-post content', this.post)
   },
 }
 </script>
