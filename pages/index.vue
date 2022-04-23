@@ -1,6 +1,6 @@
 <template>
   <article class="home">
-    <h1>Home</h1>
+    <h1 class="animate-in">Home</h1>
   </article>
 </template>
 

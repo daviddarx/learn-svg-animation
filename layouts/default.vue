@@ -9,6 +9,7 @@
       <Nuxt />
     </main>
     <AppFooter class="footer" />
+    <PageTransition />
   </div>
 </template>
 

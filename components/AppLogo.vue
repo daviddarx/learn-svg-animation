@@ -13,6 +13,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.logo {
+  @apply relative z-50;
+}
+
 .logo__link {
   @apply text-4xl no-underline;
 

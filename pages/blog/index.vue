@@ -1,7 +1,7 @@
 <template>
   <article class="blog">
-    <h1>Blog</h1>
-    <aside>
+    <h1 class="animate-in">Blog</h1>
+    <aside class="animate-in animate-in--s1">
       <h2 class="hidden">Blog articles</h2>
       <ul>
         <li v-for="post of posts" :key="post.slug">
