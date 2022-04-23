@@ -26,7 +26,7 @@ export default {
   @apply relative z-50;
   @apply border-t border-b border-gray-900;
 
-  @screen tablet {
+  @screen mobile {
     @apply py-2;
   }
 }
@@ -42,7 +42,7 @@ export default {
 
 .nav__link {
   @apply inline-block;
-  @apply py-4 pr-4;
+  @apply py-6 pr-4;
   @apply no-underline uppercase tracking-wider;
 
   @screen mobile {
