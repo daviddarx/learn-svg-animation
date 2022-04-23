@@ -5,6 +5,13 @@ module.exports = {
   content: ['./pages/**/*.vue', './components/**/*.vue', './layouts/**/*.vue'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Azeret Mono', 'monospace'],
+      },
+      fontWeight: {
+        normal: 500,
+        bold: 800,
+      },
       colors: {
         primary: colors.sky,
         secondary: colors.green,
