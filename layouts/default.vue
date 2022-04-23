@@ -21,17 +21,47 @@ export default {
 
 <style lang="postcss" scoped>
 .website {
+  --website-padding: 5vw;
+  --border-padding-ratio: calc(var(--website-padding) * 0.5);
+
+  @screen desktop {
+    --website-padding: 10vw;
+  }
+
   @apply flex flex-col min-h-screen;
+
+  &::before,
+  &::after {
+    @apply fixed block box-border z-50;
+    @apply pointer-events-none;
+    content: '';
+  }
+
+  &::before {
+    @apply top-0 left-0 w-full h-screen;
+    @apply border-gray-100;
+
+    border-width: var(--border-padding-ratio);
+  }
+
+  &::after {
+    top: var(--border-padding-ratio);
+    bottom: var(--border-padding-ratio);
+    left: var(--border-padding-ratio);
+    right: var(--border-padding-ratio);
+
+    outline: 1px solid theme('colors.primary.900');
+  }
 }
 
 .header,
 .content,
 .footer {
-  @apply p-5vw;
+  @apply p-[var(--website-padding)];
+}
 
-  @screen desktop {
-    @apply p-10vw;
-  }
+.header {
+  @apply pb-[var(--border-padding-ratio)];
 }
 
 .content {
