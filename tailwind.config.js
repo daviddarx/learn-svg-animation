@@ -16,10 +16,6 @@ module.exports = {
         primary: colors.sky,
         secondary: colors.green,
       },
-      spacing: {
-        '5vw': '5vw',
-        '10vw': '10vw',
-      },
       transitionProperty: {
         text: 'color',
       },
