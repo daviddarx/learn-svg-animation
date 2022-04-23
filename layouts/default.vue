@@ -67,4 +67,8 @@ export default {
 .content {
   @apply flex-grow pt-0;
 }
+
+::v-deep .nav {
+  @apply mt-[var(--border-padding-ratio)];
+}
 </style>

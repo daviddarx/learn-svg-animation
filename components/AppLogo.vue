@@ -14,11 +14,13 @@ export default {
 
 <style lang="postcss" scoped>
 .logo {
-  @apply relative z-50;
+  @apply relative inline-block z-50;
+  @apply py-2 px-3;
+  @apply bg-gray-900;
 }
 
 .logo__link {
-  @apply text-4xl no-underline;
+  @apply text-gray-100 text-4xl no-underline;
 
   @screen tablet {
     @apply text-2xl;
