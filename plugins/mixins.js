@@ -1,6 +1,10 @@
 import Vue from 'vue'
+import { mapState } from 'vuex'
 
 const mixins = {
+  computed: {
+    ...mapState(['headTitleBase']),
+  },
   mounted() {},
   methods: {
     formatDate(date) {

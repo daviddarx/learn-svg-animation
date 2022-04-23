@@ -1,4 +1,5 @@
 export const state = () => ({
+  headTitleBase: 'Boilerplate Nuxtjs',
   browserInfo: {},
 })
 

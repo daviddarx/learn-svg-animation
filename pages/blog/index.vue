@@ -25,6 +25,16 @@ export default {
       posts,
     }
   },
+  data() {
+    return {
+      pageTitle: 'Blog',
+    }
+  },
+  head() {
+    return {
+      title: `${this.pageTitle} - ${this.headTitleBase}`,
+    }
+  },
 }
 </script>
 

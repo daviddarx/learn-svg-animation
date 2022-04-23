@@ -44,6 +44,16 @@ export default {
       next,
     }
   },
+  head() {
+    return {
+      title: `${this.pageTitle} - ${this.headTitleBase}`,
+    }
+  },
+  computed: {
+    pageTitle() {
+      return this.post.title
+    },
+  },
   mounted() {
     // console.log('blog-post content', this.post)
   },

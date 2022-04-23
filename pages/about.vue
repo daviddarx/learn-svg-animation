@@ -7,6 +7,16 @@
 <script>
 export default {
   name: 'AboutPage',
+  data() {
+    return {
+      pageTitle: 'About',
+    }
+  },
+  head() {
+    return {
+      title: `${this.pageTitle} - ${this.headTitleBase}`,
+    }
+  },
 }
 </script>
 
