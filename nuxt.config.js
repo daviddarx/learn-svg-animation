@@ -1,6 +1,5 @@
 export default {
   target: 'static',
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'boilerplate-nuxtjs',
     htmlAttrs: {
@@ -15,31 +14,23 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/main.pcss'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/mixins'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-  ],
+  loading: false,
 
-  // Modules: https://go.nuxtjs.dev/config-modules
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
+
   modules: ['@nuxt/content'],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
       plugins: {
         'postcss-import': {},
+        'postcss-for': {},
         'tailwindcss/nesting': {},
       },
     },
