@@ -16,7 +16,10 @@ export default {
 
   css: ['@/assets/css/main.pcss'],
 
-  plugins: ['@/plugins/mixins'],
+  plugins: [
+    { src: '@/plugins/mixins' },
+    { src: '@/plugins/actions', mode: 'server' },
+  ],
 
   components: true,
 
