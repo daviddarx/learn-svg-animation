@@ -40,12 +40,12 @@ export default {
 }
 
 .transition-enter-active {
-  @apply transition-transform duration-350 ease-out-cubic;
+  @apply transition-transform duration-150 ease-out-cubic;
   @apply origin-top-left;
 }
 
 .transition-leave-active {
-  @apply transition-transform duration-350 ease-in-out-cubic;
+  @apply transition-transform duration-150 ease-in-out-cubic;
   @apply origin-bottom-left;
 }
 
