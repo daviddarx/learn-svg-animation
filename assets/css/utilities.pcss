@@ -30,4 +30,17 @@
       transform: translateY(5vh);
     }
   }
+
+  .card-list {
+    @apply mt-12;
+    @apply grid grid-cols-4 gap-4;
+
+    @screen desktop {
+      @apply grid-cols-2;
+    }
+
+    @screen tablet-s {
+      @apply grid-cols-1;
+    }
+  }
 }

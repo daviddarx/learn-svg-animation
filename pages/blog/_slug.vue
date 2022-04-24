@@ -1,10 +1,16 @@
 <template>
   <article class="blog-detail">
     <h1 class="animate-in">{{ post.title }}</h1>
-    <p>{{ formatDate(post.date) }}</p>
-    <p>{{ post.description }}</p>
-    <nuxt-content :document="post" />
-    <BlogPagination :prev="prev" :next="next" />
+    <div class="animate-in animate-in--s1">
+      <p>{{ formatDate(post.date) }}</p>
+      <p>{{ post.description }}</p>
+    </div>
+    <nuxt-content :document="post" class="animate-in animate-in--s2" />
+    <BlogPagination
+      :prev="prev"
+      :next="next"
+      class="animate-in animate-in--s3"
+    />
   </article>
 </template>
 
@@ -20,13 +26,13 @@ export default {
     }
 
     let [prev, next] = await $content('blog-posts')
-      .only(['title', 'slug'])
+      .only(['title', 'slug', 'date'])
       .sortBy('date', 'asc')
       .surround(params.slug)
       .fetch()
 
     const allPosts = await $content('blog-posts')
-      .only(['title', 'slug'])
+      .only(['title', 'slug', 'date'])
       .sortBy('date', 'asc')
       .fetch()
 
@@ -53,9 +59,6 @@ export default {
     pageTitle() {
       return this.post.title
     },
-  },
-  mounted() {
-    // console.log('blog-post content', this.post)
   },
 }
 </script>

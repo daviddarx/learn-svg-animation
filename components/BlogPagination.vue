@@ -1,18 +1,22 @@
 <template>
-  <nav>
+  <nav class="blog-pagination card-list">
     <h2 class="hidden">Blog Pagination</h2>
-    <p v-if="prev">
-      Prev:
-      <NuxtLink :to="{ name: $route.name, params: { slug: prev.slug } }">
-        {{ prev.title }}
-      </NuxtLink>
-    </p>
-    <p v-if="next">
-      Next:
-      <NuxtLink :to="{ name: $route.name, params: { slug: next.slug } }">
-        {{ next.title }}
-      </NuxtLink>
-    </p>
+    <div v-if="prev">
+      <BlogCard
+        :subline="'Previous:'"
+        :title="prev.title"
+        :date="formatDate(prev.date)"
+        :route="{ name: $route.name, params: { slug: prev.slug } }"
+      />
+    </div>
+    <div v-if="next">
+      <BlogCard
+        :subline="'Next:'"
+        :title="next.title"
+        :date="formatDate(next.date)"
+        :route="{ name: $route.name, params: { slug: next.slug } }"
+      />
+    </div>
   </nav>
 </template>
 
@@ -32,4 +36,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss" scoped></style>

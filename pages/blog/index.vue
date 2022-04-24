@@ -3,12 +3,13 @@
     <h1 class="animate-in">Blog</h1>
     <aside class="animate-in animate-in--s1">
       <h2 class="hidden">Blog articles</h2>
-      <ul>
+      <ul class="blog__list card-list">
         <li v-for="post of posts" :key="post.slug">
-          <NuxtLink :to="'/blog/' + post.slug">
-            <h3>{{ post.title }}</h3>
-          </NuxtLink>
-          {{ formatDate(post.date) }}
+          <BlogCard
+            :title="post.title"
+            :date="formatDate(post.date)"
+            :route="'/blog/' + post.slug"
+          />
         </li>
       </ul>
     </aside>

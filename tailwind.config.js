@@ -19,6 +19,7 @@ module.exports = {
       },
       transitionProperty: {
         text: 'color',
+        bg: 'background-color',
       },
       transitionDuration: {
         text: '250ms',
