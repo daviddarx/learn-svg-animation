@@ -22,7 +22,11 @@ export default {
 
   loading: false,
 
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+  ],
 
   modules: ['@nuxt/content'],
 
@@ -34,5 +38,18 @@ export default {
         'tailwindcss/nesting': {},
       },
     },
+  },
+
+  googleFonts: {
+    families: {
+      'Azeret+Mono': {
+        wght: [500, 800],
+        // ital: [100],
+      },
+    },
+    display: 'swap',
+    // prefetch: true,
+    // preconnect: true,
+    // preload: true,
   },
 }

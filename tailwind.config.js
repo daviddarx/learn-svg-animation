@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -6,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Azeret Mono', 'monospace'],
+        sans: ['Azeret Mono', ...defaultTheme.fontFamily.sans],
       },
       fontWeight: {
         normal: 500,
