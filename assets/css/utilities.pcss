@@ -6,19 +6,22 @@
   }
 
   .animate-in {
-    --delay-base: 0.2s;
+    --delay-base: 0.1s;
     --delay-step: 0.2s;
+    --delay-id: 0;
 
     opacity: 1;
     transform: translateY(0);
     transition: opacity, transform;
     transition-duration: 0.25s, 0.5s;
     transition-timing-function: ease-out, cubic-bezier(0.165, 0.84, 0.44, 1); /* quart */
-    transition-delay: 0.2s;
+    transition-delay: calc(
+      var(--delay-base) + var(--delay-step) * var(--delay-id)
+    );
 
     @for $i from 1 to 10 {
       &--s$(i) {
-        transition-delay: calc(var(--delay-base) + var(--delay-step) * var(i));
+        --delay-id: $(i);
       }
     }
 
