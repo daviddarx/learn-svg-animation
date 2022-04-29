@@ -1,5 +1,5 @@
 ---
-title: Startpoint to develop small  websites
+title: Startpoint to develop small websites
 content:
   - body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in odio
       eget orci tristique dictum. Etiam a vehicula dui. Quisque rutrum dui eget
