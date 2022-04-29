@@ -1,17 +1,24 @@
 <template>
   <article class="blog-detail">
-    <img v-if="post.image" :src="post.image" class="blog-detail__hero" />
+    <img
+      v-if="post.image"
+      :src="post.image"
+      class="blog-detail__hero animate-in"
+    />
 
-    <h1 class="animate-in">{{ post.title }}</h1>
+    <h1 class="animate-in animate-in--s1">{{ post.title }}</h1>
 
-    <div class="animate-in animate-in--s1">
+    <div class="animate-in animate-in--s2">
       <p>{{ formatDate(post.date) }}</p>
       <p>{{ post.description }}</p>
     </div>
 
-    <nuxt-content :document="post" class="animate-in animate-in--s2" />
+    <nuxt-content :document="post" class="animate-in animate-in--s3" />
 
-    <div v-if="post.images" class="blog-detail__images grid-four">
+    <div
+      v-if="post.images"
+      class="blog-detail__images animate-in animate-in--s4 grid-four"
+    >
       <img
         v-for="(img, index) in post.images"
         :key="img.image + index"
@@ -22,7 +29,7 @@
     <BlogPagination
       :prev="prev"
       :next="next"
-      class="animate-in animate-in--s3"
+      class="animate-in animate-in--s5"
     />
   </article>
 </template>
