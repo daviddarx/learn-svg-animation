@@ -35,6 +35,15 @@ aliases:
         ],
       required: false,
     }
+  - &IMG { label: 'Image', name: 'image', widget: 'image', required: false }
+  - &IMGS {
+      label: 'Additional images',
+      name: 'images',
+      widget: 'list',
+      fields:
+        [{ label: 'Image', name: 'image', widget: 'image', required: false }],
+      required: false,
+    }
   - &DL {
       label: 'Definition List',
       name: 'definitionList',
@@ -48,7 +57,7 @@ aliases:
             required: false,
           },
           {
-            label: DL 'Body',
+            label: DL Body',
             name: 'dlBbody',
             widget: 'markdown',
             required: false,
@@ -99,7 +108,9 @@ collections:
       - <<: *TITLE
       - <<: *DATE
       - <<: *DESC
+      - <<: *IMG
       - <<: *BODY
+      - <<: *IMGS
 
   - name: 'contact'
     label: 'Contact'
