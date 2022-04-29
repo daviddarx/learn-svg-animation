@@ -15,15 +15,18 @@ export default {
       page,
     }
   },
+  data() {
+    return {
+      pageTitle: 'Home',
+    }
+  },
   head() {
     return {
+      title: `${this.pageTitle} - ${this.headTitleBase}`,
       script: [
         { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
       ],
     }
-  },
-  mounted() {
-    console.log('mounted', this.page)
   },
 }
 </script>
