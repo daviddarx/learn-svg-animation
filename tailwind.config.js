@@ -13,6 +13,9 @@ module.exports = {
         normal: 500,
         bold: 800,
       },
+      lineHeight: {
+        relaxed: '1.8',
+      },
       colors: {
         primary: colors.sky,
         secondary: colors.green,
