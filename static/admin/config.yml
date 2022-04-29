@@ -6,17 +6,108 @@ backend:
 media_folder: static/img/uploads
 public_folder: /img/uploads
 
+aliases:
+  - &TITLE { label: 'Title', name: 'title', widget: 'string', required: false }
+  - &DATE {
+      label: 'Publish Date',
+      name: 'date',
+      widget: 'datetime',
+      required: false,
+    }
+  - &DESC {
+      label: 'Description',
+      name: 'description',
+      widget: 'string',
+      required: false,
+    }
+  - &BODY {
+      label: 'Body',
+      name: 'body',
+      widget: 'markdown',
+      buttons:
+        [
+          'bold',
+          'link',
+          'heading-three',
+          'heading-four',
+          'bulleted-list',
+          'numbered-list',
+        ],
+      required: false,
+    }
+  - &DL {
+      label: 'Definition List',
+      name: 'definitionList',
+      widget: 'list',
+      fields:
+        [
+          {
+            label: 'DL Title',
+            name: 'dlTitle',
+            widget: 'string',
+            required: false,
+          },
+          {
+            label: DL 'Body',
+            name: 'dlBbody',
+            widget: 'markdown',
+            required: false,
+            buttons: ['bold', 'link'],
+          },
+        ],
+      required: false,
+    }
+
 collections:
+  - name: 'home'
+    label: 'Home'
+    folder: 'content/home'
+    format: 'frontmatter'
+    create: true
+    delete: false
+    slug: 'home'
+    fields:
+      - <<: *TITLE
+      - <<: *BODY
+
+  - name: 'about'
+    label: 'About'
+    folder: 'content/about'
+    format: 'frontmatter'
+    create: true
+    delete: false
+    slug: 'about'
+    fields:
+      - <<: *TITLE
+
+      - label: 'Content'
+        name: 'content'
+        widget: 'list'
+        required: false
+        fields:
+          - <<: *TITLE
+          - <<: *BODY
+          - <<: *DL
+
   - name: 'blog'
     label: 'Blog'
     folder: 'content/blog-posts'
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - <<: *TITLE
+      - <<: *DATE
+      - <<: *DESC
+      - <<: *BODY
+
+  - name: 'contact'
+    label: 'Contact'
+    folder: 'content/contact'
+    format: 'frontmatter'
+    create: true
+    delete: false
+    slug: 'contact'
+    fields:
+      - <<: *TITLE
+      - <<: *BODY
