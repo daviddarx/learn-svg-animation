@@ -1,7 +1,10 @@
 <template>
   <article class="blog">
-    <h1 class="animate-in">Blog</h1>
-    <aside class="animate-in animate-in--s1">
+    <h1 class="animate-in">{{ page.title }}</h1>
+
+    <nuxt-content :document="page" class="animate-in animate-in--s1" />
+
+    <aside class="animate-in animate-in--s2">
       <h2 class="hidden">Blog articles</h2>
       <ul class="blog__list card-list">
         <li v-for="post of posts" :key="post.slug">
@@ -20,9 +23,11 @@
 export default {
   name: 'BlogPage',
   async asyncData({ $content }) {
+    const page = await $content('blog/blog').fetch()
     const posts = await $content('blog-posts').sortBy('date', 'asc').fetch()
 
     return {
+      page,
       posts,
     }
   },
