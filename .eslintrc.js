@@ -13,6 +13,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-unused-vars': 'off',
+    'vue/no-v-html': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { args: 'after-used' }],
   },
 }
