@@ -102,7 +102,7 @@ collections:
     label: 'Blog'
     folder: 'content/blog'
     format: 'frontmatter'
-    create: true
+    create: false
     delete: false
     slug: 'blog'
     fields:
