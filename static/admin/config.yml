@@ -58,7 +58,7 @@ aliases:
           },
           {
             label: DL Body',
-            name: 'dlBbody',
+            name: 'dlBody',
             widget: 'markdown',
             required: false,
             buttons: ['bold', 'link'],

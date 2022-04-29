@@ -10,15 +10,18 @@ content:
       Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras sed ultricies lorem, vel imperdiet nisl. Nunc lectus lectus, cursus sit amet leo quis, consequat tempor dui. Aenean a varius velit.
     definitionList:
       - dlTitle: DL Title 1
-        dlBbody: Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
+        dlBody:
+          Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
           sed ultricies lorem, vel imperdiet nisl. Nunc lectus lectus, cursus
           sit amet leo quis, consequat tempor dui. Aenean a varius velit.
       - dlTitle: DL Title 2
-        dlBbody: Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
+        dlBody:
+          Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
           sed ultricies lorem, vel imperdiet nisl. Nunc lectus lectus, cursus
           sit amet leo quis, consequat tempor dui. Aenean a varius velit.
       - dlTitle: DL Title 3
-        dlBbody: Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
+        dlBody:
+          Mauris semper eleifend velit, eu venenatis sapien venenatis quis. Cras
           sed ultricies lorem, vel imperdiet nisl. Nunc lectus lectus, cursus
           sit amet leo quis, consequat tempor dui. Aenean a varius velit.
   - title: Title h2
