@@ -41,9 +41,6 @@ export default {
       title: `${this.pageTitle} - ${this.headTitleBase}`,
     }
   },
-  mounted() {
-    console.log(this.page.content)
-  },
 }
 </script>
 
