@@ -6,7 +6,7 @@
 
     <aside class="animate-in animate-in--s2">
       <h2 class="hidden">Blog articles</h2>
-      <ul class="blog__list card-list">
+      <ul class="blog__list grid-four">
         <li v-for="post of posts" :key="post.slug">
           <BlogCard
             :title="post.title"

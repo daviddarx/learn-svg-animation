@@ -1,5 +1,5 @@
 <template>
-  <nav class="blog-pagination card-list">
+  <nav class="blog-pagination grid-four">
     <h2 class="hidden">Blog Pagination</h2>
     <div v-if="prev">
       <BlogCard
