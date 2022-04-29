@@ -22,7 +22,7 @@ content:
           sed ultricies lorem, vel imperdiet nisl. Nunc lectus lectus, cursus
           sit amet leo quis, consequat tempor dui. Aenean a varius velit.
   - title: Title h2
-    body: "**Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in odio
+    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in odio
       eget orci tristique dictum. Etiam a vehicula dui. Quisque rutrum dui eget
-      blandit lobortis.**"
+      blandit lobortis.
 ---
