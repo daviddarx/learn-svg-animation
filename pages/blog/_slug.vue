@@ -1,11 +1,24 @@
 <template>
   <article class="blog-detail">
+    <img v-if="post.image" :src="post.image" class="blog-detail__hero" />
+
     <h1 class="animate-in">{{ post.title }}</h1>
+
     <div class="animate-in animate-in--s1">
       <p>{{ formatDate(post.date) }}</p>
       <p>{{ post.description }}</p>
     </div>
+
     <nuxt-content :document="post" class="animate-in animate-in--s2" />
+
+    <div v-if="post.images" class="blog-detail__images grid-four">
+      <img
+        v-for="(img, index) in post.images"
+        :key="img.image + index"
+        :src="img.image"
+      />
+    </div>
+
     <BlogPagination
       :prev="prev"
       :next="next"
@@ -60,5 +73,14 @@ export default {
       return this.post.title
     },
   },
+  mounted() {
+    console.log(this.post)
+  },
 }
 </script>
+
+<style lang="postcss" scoped>
+.blog-detail__hero {
+  @apply block object-cover w-full h-64;
+}
+</style>
