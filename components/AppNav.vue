@@ -23,7 +23,7 @@ export default {
 
 <style lang="postcss" scoped>
 .nav {
-  @apply relative z-50;
+  @apply relative z-40;
   @apply border-t border-b border-gray-900;
 
   @screen mobile {

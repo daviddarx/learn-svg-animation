@@ -14,7 +14,7 @@ export default {
 
 <style lang="postcss" scoped>
 .logo {
-  @apply relative inline-block z-50;
+  @apply relative inline-block z-40;
   @apply py-2 px-3;
   @apply bg-gray-900;
 }
