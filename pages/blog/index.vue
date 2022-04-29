@@ -1,8 +1,15 @@
 <template>
   <article class="blog">
-    <h1 class="animate-in">{{ page.title }}</h1>
+    <div class="col-left">
+      <h1 class="animate-in">{{ page.title }}</h1>
+    </div>
 
-    <nuxt-content :document="page" class="animate-in animate-in--s1" />
+    <div class="col-right">
+      <nuxt-content
+        :document="page"
+        class="animate-in animate-in--s1 md-content"
+      />
+    </div>
 
     <aside class="animate-in animate-in--s2">
       <h2 class="hidden">Blog articles</h2>

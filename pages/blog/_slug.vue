@@ -1,19 +1,27 @@
 <template>
   <article class="blog-detail">
-    <img
-      v-if="post.image"
-      :src="post.image"
-      class="blog-detail__hero animate-in"
-    />
-
-    <h1 class="animate-in animate-in--s1">{{ post.title }}</h1>
-
-    <div class="animate-in animate-in--s2">
-      <p>{{ formatDate(post.date) }}</p>
-      <p>{{ post.description }}</p>
+    <div class="col-right">
+      <img
+        v-if="post.image"
+        :src="post.image"
+        class="blog-detail__hero animate-in"
+      />
     </div>
 
-    <nuxt-content :document="post" class="animate-in animate-in--s3" />
+    <div class="col-left">
+      <h1 class="animate-in animate-in--s1">{{ post.title }}</h1>
+    </div>
+
+    <div class="col-left">
+      <div class="animate-in animate-in--s2">
+        <p class="blog-detail__date">{{ formatDate(post.date) }}</p>
+        <p>{{ post.description }}</p>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <nuxt-content :document="post" class="animate-in animate-in--s3" />
+    </div>
 
     <div
       v-if="post.images"
@@ -80,14 +88,15 @@ export default {
       return this.post.title
     },
   },
-  mounted() {
-    console.log(this.post)
-  },
 }
 </script>
 
 <style lang="postcss" scoped>
 .blog-detail__hero {
   @apply block object-cover w-full h-64;
+}
+
+.blog-detail__date {
+  @apply font-bold;
 }
 </style>

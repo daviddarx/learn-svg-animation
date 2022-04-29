@@ -1,7 +1,14 @@
 <template>
   <article class="home">
-    <h1 class="animate-in">{{ page.title }}</h1>
-    <nuxt-content :document="page" class="animate-in animate-in--s1" />
+    <div class="col-left">
+      <h1 class="page-title animate-in">{{ page.title }}</h1>
+    </div>
+    <div class="col-right">
+      <nuxt-content
+        :document="page"
+        class="animate-in animate-in--s1 md-content"
+      />
+    </div>
   </article>
 </template>
 

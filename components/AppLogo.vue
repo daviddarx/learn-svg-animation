@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <h2>
+    <h2 class="logo__text">
       <nuxt-link to="/" class="logo__link">Logo</nuxt-link>
     </h2>
   </div>
@@ -19,11 +19,15 @@ export default {
   @apply bg-gray-900;
 }
 
-.logo__link {
-  @apply text-gray-100 text-4xl no-underline;
+.logo__text {
+  @apply text-gray-100 text-4xl leading-none no-underline;
 
   @screen tablet {
     @apply text-2xl;
   }
+}
+
+.logo__link {
+  @apply no-underline;
 }
 </style>
