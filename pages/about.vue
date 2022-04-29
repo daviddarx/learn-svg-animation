@@ -9,12 +9,12 @@
     >
       <h2 v-if="content.title">{{ content.title }}</h2>
 
-      <p v-html="getHTMLfromMD(content.body)"></p>
+      <div v-html="getHTMLfromMD(content.body)"></div>
 
       <dl v-if="content.definitionList">
-        <template v-for="list of content.definitionList">
-          <dt :key="list.dlTitle" v-html="list.dlTitle"></dt>
-          <dd :key="list.dlBody" v-html="list.dlBody"></dd>
+        <template v-for="(list, listIndex) of content.definitionList">
+          <dt :key="list.dlTitle + listIndex" v-html="list.dlTitle"></dt>
+          <dd :key="list.dlBody + listIndex" v-html="list.dlBody"></dd>
         </template>
       </dl>
     </section>
