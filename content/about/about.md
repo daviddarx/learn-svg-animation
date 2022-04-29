@@ -12,5 +12,11 @@ content:
     title: asdasdsad
     body: asdasdasdasdasdasdasds
   - type: text
-    body: asdasdasdasdasdasdasdasdasdasd asdasdasd asda
+    body: |-
+      **asdasdasdasd**asdasdasda[sdasda](asdasdasd)sd asdasdasd asda
+
+      * asdasdas
+      * assdasd
+      * asd
+      * asd
 ---
