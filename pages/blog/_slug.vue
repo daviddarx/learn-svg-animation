@@ -1,19 +1,20 @@
 <template>
   <article class="blog-detail">
+    <AppBreadcrumb :title="pageTitle" class="animate-in" />
     <div class="col-right">
       <img
         v-if="post.image"
         :src="post.image"
-        class="blog-detail__hero animate-in"
+        class="blog-detail__hero animate-in animate-in--s1"
       />
     </div>
 
     <div class="col-left">
-      <h1 class="animate-in animate-in--s1">{{ post.title }}</h1>
+      <h1 class="animate-in animate-in--s2">{{ post.title }}</h1>
     </div>
 
     <div class="col-left">
-      <div class="animate-in animate-in--s2">
+      <div class="animate-in animate-in--s3">
         <p class="blog-detail__date">{{ formatDate(post.date) }}</p>
         <p>{{ post.description }}</p>
       </div>

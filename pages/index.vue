@@ -1,12 +1,12 @@
 <template>
   <article class="home">
     <div class="col-left">
-      <h1 class="page-title animate-in">{{ page.title }}</h1>
+      <h1 class="page-title animate-in animate-in--s1">{{ page.title }}</h1>
     </div>
     <div class="col-right">
       <nuxt-content
         :document="page"
-        class="animate-in animate-in--s1 md-content"
+        class="animate-in animate-in--s2 md-content"
       />
     </div>
   </article>
