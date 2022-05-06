@@ -100,14 +100,14 @@
 
   .grid-four {
     @apply mt-12;
-    @apply grid-cols-1;
+    @apply grid grid-cols-1 gap-4;
 
     @screen lg {
       @apply grid-cols-2;
     }
 
     @screen xl {
-      @apply grid grid-cols-4 gap-4;
+      @apply grid-cols-4;
     }
   }
 }
