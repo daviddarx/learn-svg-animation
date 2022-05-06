@@ -1,5 +1,0 @@
-[build.environment] 
-# Skip optional dependencies
-  NPM_FLAGS = "--no-optional"
-# Turn off logging
-  CI = "1"
