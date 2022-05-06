@@ -26,6 +26,7 @@ export default {
   loading: false,
 
   buildModules: [
+    '@nuxt/image',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
@@ -54,5 +55,18 @@ export default {
     // prefetch: true,
     // preconnect: true,
     // preload: true,
+  },
+
+  image: {
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536,
+      '3xl': 1920,
+    },
   },
 }

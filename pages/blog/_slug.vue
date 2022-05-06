@@ -2,13 +2,15 @@
   <article class="blog-detail">
     <AppBreadcrumb :title="pageTitle" class="animate-in" />
     <div class="col-right">
-      <img
+      <nuxt-img
         v-if="post.image"
         :src="post.image"
+        sizes="xxl:100vw lg:100vw md:100vw sm:100vw xs:100vw"
+        format="jpg"
+        quality="80"
         class="blog-detail__hero animate-in animate-in--s1"
       />
     </div>
-
     <div class="col-left">
       <h1 class="animate-in animate-in--s2">{{ post.title }}</h1>
     </div>
@@ -28,10 +30,13 @@
       v-if="post.images"
       class="blog-detail__images animate-in animate-in--s4 grid-four"
     >
-      <img
+      <nuxt-img
         v-for="(img, index) in post.images"
         :key="img.image + index"
         :src="img.image"
+        sizes="xxl:25vw xl:50vw lg:100vw sm:100vw xs:100vw"
+        format="jpg"
+        quality="80"
       />
     </div>
 
