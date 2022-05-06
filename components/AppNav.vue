@@ -24,29 +24,30 @@ export default {
 <style lang="postcss" scoped>
 .nav {
   @apply relative z-40;
+  @apply py-2;
   @apply border-t border-b border-gray-900;
 
-  @screen mobile {
-    @apply py-2;
+  @screen sm {
+    @apply py-0;
   }
 }
 
 .nav__el {
-  @apply inline-block;
+  @apply block;
   @apply font-bold leading-none;
 
-  @screen mobile {
-    @apply block;
+  @screen sm {
+    @apply inline-block;
   }
 }
 
 .nav__link {
   @apply inline-block;
-  @apply py-6 pr-4;
+  @apply py-2 mb-0;
   @apply no-underline uppercase tracking-wider;
 
-  @screen mobile {
-    @apply py-2 mb-0;
+  @screen sm {
+    @apply py-6 pr-4;
   }
 
   &.nuxt-link-exact-active,

@@ -20,10 +20,10 @@ export default {
 }
 
 .logo__text {
-  @apply text-gray-100 text-4xl leading-none no-underline;
+  @apply text-gray-100 text-2xl leading-none no-underline;
 
-  @screen tablet {
-    @apply text-2xl;
+  @screen lg {
+    @apply text-4xl;
   }
 }
 

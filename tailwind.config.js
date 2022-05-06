@@ -90,15 +90,6 @@ module.exports = {
         'in-out-back': 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
       },
     },
-    screens: {
-      'desktop-2xl': { max: '1920px' },
-      'desktop-xl': { max: '1440px' },
-      desktop: { max: '1280px' },
-      tablet: { max: '1024px' },
-      'tablet-s': { max: '768px' },
-      mobile: { max: '560px' },
-      'mobile-s': { max: '320px' },
-    },
   },
   plugins: [],
 }

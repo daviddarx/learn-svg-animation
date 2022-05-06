@@ -21,11 +21,11 @@ export default {
 
 <style lang="postcss" scoped>
 .website {
-  --website-padding: 5vw;
+  --website-padding: 10vw;
   --border-padding-ratio: calc(var(--website-padding) * 0.5);
 
-  @screen desktop {
-    --website-padding: 10vw;
+  @screen lg {
+    --website-padding: 5vw;
   }
 
   @apply flex flex-col min-h-screen;
