@@ -30,6 +30,41 @@
         @apply bg-gray-300;
       }
     }
+
+    ul {
+      @apply mb-[1em];
+
+      li {
+        @apply relative pl-[2em];
+
+        &::before {
+          content: '';
+          @apply absolute left-0 top-1/2;
+          @apply w-[1.5em] h-px;
+          @apply bg-current;
+        }
+      }
+    }
+
+    dl {
+      @apply flex flex-wrap;
+      @apply py-[1em];
+
+      dt {
+        @apply w-1/4 pr-[2em];
+        @apply font-bold;
+      }
+
+      dd {
+        @apply w-3/4;
+        @apply mb-[1em];
+      }
+
+      dt,
+      dd {
+        @apply tablet:w-full;
+      }
+    }
   }
 
   .animate-in {
