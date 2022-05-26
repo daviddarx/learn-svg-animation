@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/00b80e33-c5b5-47ba-aaeb-1d99277cf3a2/deploy-status)](https://app.netlify.com/sites/boilerplate-nuxtjs/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/addf068a-e95d-4211-8893-5d5feffcd1a3/deploy-status)](https://app.netlify.com/sites/test-svg-animation/deploys)
 
 # learn-svg-animation
 
