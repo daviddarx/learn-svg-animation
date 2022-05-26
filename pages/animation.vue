@@ -5,7 +5,7 @@
       <h1 class="animate-in animate-in--s1">Animation</h1>
     </div>
     <div class="col-right animate-in animate-in--s2">
-      <GsapBasics />
+      <AnimationGsapBasics />
     </div>
   </article>
 </template>

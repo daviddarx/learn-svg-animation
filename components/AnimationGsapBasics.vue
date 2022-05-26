@@ -59,7 +59,7 @@
 import { gsap, Elastic } from 'gsap'
 
 export default {
-  name: 'GsapBasics',
+  name: 'AnimationGsapBasics',
   data() {
     return {
       timeline: undefined,
