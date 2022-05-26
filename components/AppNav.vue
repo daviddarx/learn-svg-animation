@@ -3,6 +3,9 @@
     <h3 class="hidden">Main navigation</h3>
     <ul class="nav__list">
       <li class="nav__el">
+        <nuxt-link to="/" class="nav__link">Home</nuxt-link>
+      </li>
+      <li class="nav__el">
         <nuxt-link to="/about" class="nav__link">About</nuxt-link>
       </li>
       <li class="nav__el">
@@ -10,6 +13,9 @@
       </li>
       <li class="nav__el">
         <nuxt-link to="/contact" class="nav__link">Contact</nuxt-link>
+      </li>
+      <li class="nav__el">
+        <nuxt-link to="/animation" class="nav__link">Animation</nuxt-link>
       </li>
     </ul>
   </nav>
@@ -50,8 +56,7 @@ export default {
     @apply py-6 pr-4;
   }
 
-  &.nuxt-link-exact-active,
-  &.nuxt-link-active {
+  &.nuxt-link-exact-active {
     @apply text-secondary-600;
   }
 }
