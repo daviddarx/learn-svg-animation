@@ -1,7 +1,7 @@
 export default {
   target: 'static',
   head: {
-    title: 'boilerplate-nuxtjs',
+    title: 'learn-svg-animation',
     htmlAttrs: {
       lang: 'en',
     },

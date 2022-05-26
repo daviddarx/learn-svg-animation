@@ -1,5 +1,5 @@
 export const state = () => ({
-  headTitleBase: 'Boilerplate Nuxtjs',
+  headTitleBase: 'SVG animation',
   browserInfo: {},
   currentYear: '',
 })

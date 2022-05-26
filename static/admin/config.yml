@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: daviddarx/boilerplate-nuxtjs
+  repo: daviddarx/learn-svg-animation
   branch: main
 
 media_folder: static/img/uploads
