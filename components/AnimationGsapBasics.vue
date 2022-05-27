@@ -38,13 +38,14 @@
     <div class="container timeline">
       <div class="test test1 clickable" @click="testTimeline"></div>
       <div class="test test2 clickable" @click="testTimeline"></div>
-      <div class="flex justify-end space-x-2 bg-gray-100">
+      <div class="flex justify-end space-x-2">
         <div class="test test3 clickable" @click="testTimeline"></div>
         <div class="test test4 clickable" @click="testTimeline"></div>
       </div>
       <br /><br />
       <input
         ref="timelineRange"
+        class="slider"
         type="range"
         min="1"
         max="100"
@@ -56,7 +57,7 @@
 </template>
 
 <script>
-import { gsap, Elastic } from 'gsap'
+import { gsap } from 'gsap'
 
 export default {
   name: 'AnimationGsapBasics',
@@ -67,6 +68,9 @@ export default {
   },
   mounted() {
     this.initTimeLine()
+  },
+  beforeDestroy() {
+    this.timeline.kill()
   },
   methods: {
     testTo(el) {
@@ -81,7 +85,7 @@ export default {
         scale: 2,
         opacity: 0.5,
         duration: 1,
-        ease: Elastic.easeOut,
+        ease: 'elastic.out(1, 0.25)',
       })
     },
     testFromTo(el) {
@@ -97,7 +101,7 @@ export default {
           scaleX: 2,
           opacity: 0.5,
           duration: 2,
-          ease: Elastic.easeOut,
+          ease: 'elastic.out(1, 0.25)',
         }
       )
     },
@@ -116,9 +120,9 @@ export default {
         },
         {
           scale: 0.5,
-          rotation: 90,
+          rotation: 'random(0,360)',
           duration: 1,
-          ease: Elastic.easeOut,
+          ease: 'elastic.out(1, 0.25)',
           stagger: { grid: [3, 5], from: 'center', amount: 0.25, axis: 'x' },
         }
       )
@@ -131,7 +135,7 @@ export default {
           duration: 2,
           delay: 0.5,
           backgroundColor: '#ff00ff',
-          ease: Elastic.easeOut,
+          ease: 'elastic.out(1, 0.25)',
           stagger: { grid: [3, 5], from: 'center', amount: 0.25, axis: 'x' },
         }
       )
@@ -144,7 +148,7 @@ export default {
           rotation: 90,
           duration: 1,
           delay: 0.2,
-          ease: Elastic.easeOut,
+          ease: 'elastic.out(1, 0.25)',
         })
         .addLabel('TL1Anime1Finished')
         .to(
@@ -152,9 +156,8 @@ export default {
           {
             scale: 2,
             rotation: 180,
-            opacity: 0.5,
             duration: 1,
-            ease: Elastic.easeOut,
+            ease: 'elastic.out(1, 0.25)',
           },
           '>-=0.75'
         )
@@ -166,19 +169,25 @@ export default {
         .timeline()
         .to('.timeline .test3', {
           x: -200,
-          rotation: -180,
+          rotation: -90,
           duration: 1,
-          ease: Elastic.easeOut,
+          ease: 'elastic.out(1, 0.25)',
         })
         .addLabel('TL2Anime1Finished')
         .to(
           '.timeline .test4',
           {
             x: -100,
+            y: Math.PI * 2,
+            modifiers: {
+              y: (y) => {
+                return Math.sin(parseFloat(y)) * 90 + 'px'
+              },
+            },
+            scale: 2,
             rotation: -90,
-            opacity: 0.5,
             duration: 1,
-            ease: Elastic.easeOut,
+            ease: 'power4.out',
           },
           '>-=0.75'
         )
@@ -207,9 +216,7 @@ export default {
     rangeTimeline() {
       this.timeline
         .pause()
-        .tweenTo(
-          (this.timeline.duration() * this.$refs.timelineRange.value) / 100
-        )
+        .seek((this.timeline.duration() * this.$refs.timelineRange.value) / 100)
     },
     updateTimelineRange() {
       this.$refs.timelineRange.value = this.timeline.progress() * 100
@@ -219,16 +226,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.container {
-  background-color: white;
-  margin-bottom: 2rem;
-  padding: 2rem;
-}
 .test {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: black;
+  @apply inline-block;
+  @apply w-16 h-16;
+  @apply bg-black;
 }
 .clickable {
   cursor: pointer;
