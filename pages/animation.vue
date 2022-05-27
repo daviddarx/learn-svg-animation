@@ -10,6 +10,8 @@
       <AnimationSvgLines />
       <AnimationSvgPathes />
       <AnimationSplitText />
+      <AnimationSvgMorphes />
+      <AnimationSvgClipPathes />
     </div>
   </article>
 </template>
