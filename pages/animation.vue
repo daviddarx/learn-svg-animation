@@ -9,6 +9,7 @@
       <AnimationSvgBasics />
       <AnimationSvgLines />
       <AnimationSvgPathes />
+      <AnimationSplitText />
     </div>
   </article>
 </template>
