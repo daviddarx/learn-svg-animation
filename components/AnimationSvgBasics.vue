@@ -200,7 +200,7 @@ export default {
   @apply flex flex-col items-center justify-center;
 }
 svg {
-  @apply w-full md:w-1/2 h-auto;
+  @apply w-full md:w-1/2 lg:w-1/3 h-auto;
   @apply cursor-pointer;
 }
 .slider {
