@@ -8,6 +8,7 @@
       <AnimationGsapBasics />
       <AnimationSvgBasics />
       <AnimationSvgLines />
+      <AnimationSvgPathes />
     </div>
   </article>
 </template>
