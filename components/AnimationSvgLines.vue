@@ -63,7 +63,7 @@ export default {
     linesTL() {
       const tl = gsap.timeline().to('.svg-line', {
         drawSVG: '50% 50%',
-        duration: 1,
+        duration: 'random(0.5,3)',
         ease: 'power4.inOut',
         stagger: { amount: 1 },
       })
