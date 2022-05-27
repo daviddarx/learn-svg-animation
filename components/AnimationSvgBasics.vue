@@ -5,12 +5,12 @@
     <div class="container">
       <svg
         id="test1"
-        @click="play"
         version="1.1"
         viewBox="0 0 130 140"
         xml:space="preserve"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
+        @click="play"
       >
         <circle ref="bg" cx="64" cy="64" fill="#000000" r="62" />
         <g>
@@ -24,9 +24,9 @@
               fill="#FDFDFE"
             />
             <path
+              ref="heartline"
               d="   M94.7,23.6c9.2,0,16.7,7.5,16.7,16.7"
               fill="none"
-              opacity="0.8"
               stroke="#FFFFFF"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -80,6 +80,8 @@
 
 <script>
 import { gsap } from 'gsap'
+import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin.js'
+gsap.registerPlugin(DrawSVGPlugin)
 
 export default {
   name: 'AnimationSVGBasics',
@@ -105,6 +107,10 @@ export default {
       y: 0,
     })
     this.initTL()
+
+    gsap.set(this.$refs.heartline, {
+      drawSVG: '50% 50%',
+    })
   },
   beforeDestroy() {
     this.timeline.kill()
@@ -132,14 +138,25 @@ export default {
       return tl
     },
     heartTL() {
-      const tl = gsap.timeline().to(this.$refs.heart, {
-        scale: 1,
-        rotation: 0,
-        y: 5,
-        duration: 1,
-        ease: 'back.out(2)',
-        transformOrigin: 'center',
-      })
+      const tl = gsap
+        .timeline()
+        .to(this.$refs.heart, {
+          scale: 1,
+          rotation: 0,
+          y: 5,
+          duration: 1,
+          ease: 'back.out(2)',
+          transformOrigin: 'center',
+        })
+        .to(
+          this.$refs.heartline,
+          {
+            drawSVG: '100%',
+            duration: 1,
+            ease: 'power4.inOut',
+          },
+          '>-=0.8'
+        )
 
       return tl
     },
