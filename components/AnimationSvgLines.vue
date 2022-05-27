@@ -1,5 +1,5 @@
 <template>
-  <div class="gsap-basics">
+  <div class="gsap-lines">
     <h2>SVG lines</h2>
     <br />
     <div class="container">
@@ -10,7 +10,6 @@
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="171" height="146" fill="white" />
         <path
           class="svg-line"
           d="M23 15.5C56.5 39.5 44 57 67 39C90 21 108 4 105.5 49.5C103 95 89 150.5 121.5 112C154 73.5 179 7.5 126.5 52.5C74 97.5 45.5 181 60.5 110C75.5 39 75.5 36.5 52.5 66.5"
@@ -47,7 +46,7 @@ import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin.js'
 gsap.registerPlugin(DrawSVGPlugin)
 
 export default {
-  name: 'AnimationSVGBasics',
+  name: 'AnimationSVGLines',
   data() {
     return {
       tl: undefined,
@@ -111,6 +110,6 @@ svg {
   @apply cursor-pointer;
 }
 .slider {
-  @apply my-4;
+  @apply mb-4 mt-8;
 }
 </style>
