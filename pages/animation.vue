@@ -7,6 +7,7 @@
     <div class="col-right animate-in animate-in--s2">
       <AnimationGsapBasics />
       <AnimationSvgBasics />
+      <AnimationSvgLines />
     </div>
   </article>
 </template>
