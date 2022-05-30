@@ -51,29 +51,54 @@
         value="0"
         @input="rangeTimeline"
       />
-      <br /><br />
-      <button class="controls__btn" @click="multiPath">Test multi-path</button>
-      <pre>{{ JSON.stringify(multiPathDemo, null, 4) }}</pre>
-    </div>
 
-    <!--     <div class="controls">
-      <CstSelect
-        :id="'start'"
-        ref="start"
-        :label="'Choose start-station'"
-        :options="stations"
-        class="controls__start"
-      />
-      <CstSelect
-        :id="'end'"
-        ref="end"
-        :label="'Choose end-station'"
-        :options="stations"
-        class="controls__end"
-      />
-      <button class="controls__btn" @click="transport">Transport</button>
+      <div class="tabs">
+        <div class="tabs__header">
+          <button :class="{ active: tabsID == 0 }" @click="tabsID = 0">
+            Multiple-pathes
+          </button>
+          <button
+            :class="{ active: tabsID == 1 }"
+            @click="
+              tabsID = 1
+              setPathDemo = undefined
+            "
+          >
+            Pathfinder
+          </button>
+        </div>
+        <div class="tabs__content">
+          <div v-if="tabsID == 0">
+            <button class="button" @click="multiPathes">
+              Test multiple-pathes
+            </button>
+            <pre>{{ JSON.stringify(multiPathesDemo, null, 4) }}</pre>
+          </div>
+
+          <div v-if="tabsID == 1" class="space-y-4">
+            <CstSelect
+              :id="'start'"
+              ref="start"
+              :label="'Choose start-station'"
+              :options="stations"
+              :default-value="'A'"
+              class="controls__start"
+            />
+            <CstSelect
+              :id="'end'"
+              ref="end"
+              :label="'Choose end-station'"
+              :options="stations"
+              :default-value="'F'"
+              class="controls__end"
+            />
+            <button class="button" @click="setPathes">Find path</button>
+            <p v-if="message" class="message">{{ message }}</p>
+            <pre>{{ JSON.stringify(this.setPathDemo, null, 4) }}</pre>
+          </div>
+        </div>
+      </div>
     </div>
-    <p v-if="message" class="message">{{ message }}</p> -->
   </div>
 </template>
 
@@ -92,7 +117,8 @@ export default {
       stations: [],
       message: undefined,
       currentWares: [],
-      multiPathDemo: {
+      currentDemoData: undefined,
+      multiPathesDemo: {
         start: 'A',
         wares: [
           ['C', 'B'],
@@ -100,7 +126,19 @@ export default {
           ['C', 'D', 'F'],
         ],
       },
+      setPathDemo: undefined,
+      pathConnections: {
+        A: ['C'],
+        B: ['C'],
+        C: ['A', 'B', 'D'],
+        D: ['E', 'F', 'C'],
+        E: ['D'],
+        F: ['D'],
+      },
+      setPathAlreadySearched: [],
+      setPathPossiblePathes: [],
       timeline: undefined,
+      tabsID: 0,
     }
   },
   mounted() {
@@ -113,8 +151,8 @@ export default {
 
     this.setDestination()
 
-    // demo multipath, auto launch
-    this.multiPath()
+    // demo multipathes, auto launch
+    this.multiPathes()
   },
   beforeDestroy() {
     this.timeline.kill()
@@ -148,24 +186,82 @@ export default {
         })
       }
     },
-    multiPath() {
+    multiPathes() {
+      this.currentDemoData = this.multiPathesDemo
+      this.transort()
+    },
+    pathFinder(pathArray) {
+      const startStation = pathArray[0]
+      const trippleDemoWares = []
+
+      pathArray.shift()
+
+      for (let i = 0; i < 3; i++) {
+        trippleDemoWares.push(pathArray)
+      }
+
+      this.setPathDemo = {
+        start: startStation,
+        wares: trippleDemoWares,
+      }
+
+      this.currentDemoData = this.setPathDemo
+
+      this.transort()
+    },
+    setPathes() {
+      this.message = undefined
+
+      if (this.$refs.start.value === this.$refs.end.value) {
+        this.message = 'No need to transport :-P'
+        return
+      }
+
+      this.findPath(
+        this.$refs.start.value,
+        this.$refs.end.value,
+        [],
+        this.pathFinder
+      )
+    },
+    findPath(currentValue, targetValue, historyRegister, callback) {
+      const historyRegisterNew = [...historyRegister]
+      historyRegisterNew.push(currentValue)
+
+      if (currentValue !== targetValue) {
+        const nodes = this.pathConnections[currentValue]
+
+        nodes.forEach((value) => {
+          if (historyRegisterNew.includes(value) !== true) {
+            this.findPath(value, targetValue, historyRegisterNew, callback)
+          }
+        })
+      } else {
+        callback(historyRegisterNew)
+      }
+    },
+    transort() {
       this.removeCurrentWares()
 
       // create timeline for the full animation
+      if (this.timeline) {
+        this.timeline.progress(1)
+        this.timeline.kill()
+      }
       this.timeline = gsap.timeline()
       this.timeline.addLabel('start')
       this.timeline.eventCallback('onUpdate', this.updateTimelineRange)
 
       // get first station of the multi path demo
       const startStation = this.stations.find(
-        (el) => el.name === this.multiPathDemo.start
+        (el) => el.name === this.currentDemoData.start
       )
 
       // create a register of all visited stations, to avoid firing several time the "arrived animation"
       const visitedStation = []
 
       // for each ware of the multi path demo
-      this.multiPathDemo.wares.forEach((ware, i) => {
+      this.currentDemoData.wares.forEach((ware, i) => {
         // create instace of ware object
         const wareInstance = new this.instancesClasses.CstWare()
         wareInstance.$mount()
@@ -183,7 +279,7 @@ export default {
         wareInstance.tl = gsap.timeline()
 
         // for each steps of the ware, add a step in the timeline with motion path to next station
-        ware.forEach((step, j) => {
+        ware.forEach((step) => {
           const station = this.stations.find((el) => el.name === step)
 
           wareInstance.tl.to(wareInstance.$el, {
@@ -224,12 +320,6 @@ export default {
         this.timeline.add(wareInstance.tl, 'start')
       })
     },
-    /* transport() {
-      this.message = undefined
-      if (this.$refs.start.value === this.$refs.end.value) {
-        this.message = 'No need to transport :-P'
-      }
-    }, */
     rangeTimeline() {
       this.timeline
         .pause()
@@ -244,11 +334,12 @@ export default {
 
 <style lang="postcss" scoped>
 .map-container {
-  @apply flex;
+  @apply lg:flex;
 }
 
 .map {
-  @apply w-2/3;
+  @apply w-full lg:w-1/2 xl:w-2/3;
+  @apply lg:pr-10;
 
   svg {
     @apply block w-full h-auto;
@@ -260,14 +351,46 @@ export default {
 }
 
 .controls {
-  @apply w-1/3 border border-gray-200 p-12;
+  @apply w-full lg:w-1/2 xl:w-1/3;
+  @apply border border-gray-300;
+  @apply p-6;
+  @apply text-sm;
+}
 
-  &__btn {
-    @apply bg-gray-700 text-white leading-none p-4;
-  }
+.button {
+  @apply bg-gray-700 p-4;
+  @apply text-white leading-none;
 }
 
 .message {
   @apply bg-gray-200 p-3 mt-4;
+}
+
+.slider {
+  @apply w-full;
+}
+
+pre {
+  @apply mt-4;
+}
+
+.tabs {
+  @apply mt-10;
+}
+
+.tabs__header {
+  @apply border-b border-black;
+
+  button {
+    @apply inline-block mr-8 pb-3;
+
+    &.active {
+      @apply border-b-4 border-black;
+    }
+  }
+}
+
+.tabs__content {
+  @apply mt-12;
 }
 </style>

@@ -7,6 +7,7 @@
         :key="option.name"
         ref="options"
         :value="option.name"
+        :selected="option.name === defaultValue"
       >
         {{ option.name }}
       </option>
@@ -30,18 +31,20 @@ export default {
       type: Array,
       default: () => [],
     },
+    defaultValue: {
+      type: String,
+      default: undefined,
+    },
   },
   data() {
     return {
       value: 0,
     }
   },
-  watch: {
-    options(newVal) {
-      if (newVal.length) this.value = newVal[0].name
-    },
+  mounted() {
+    this.value = this.$refs.select.value
+    if (this.defaultValue) this.value = this.defaultValue
   },
-  mounted() {},
   methods: {
     onChange() {
       this.value = this.$refs.select.value
@@ -52,7 +55,7 @@ export default {
 
 <style lang="postcss" scoped>
 .select-group {
-  @apply inline-block;
+  @apply block;
 }
 select {
   @apply block w-full p-4;
