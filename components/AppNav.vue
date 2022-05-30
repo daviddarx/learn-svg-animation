@@ -17,6 +17,9 @@
       <li class="nav__el">
         <nuxt-link to="/animation" class="nav__link">Animation</nuxt-link>
       </li>
+      <li class="nav__el">
+        <nuxt-link to="/cst" class="nav__link">CST</nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
