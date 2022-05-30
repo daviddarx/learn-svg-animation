@@ -77,7 +77,6 @@
   </div>
 </template>
 
-344 290 396 369
 <script>
 import Vue from 'vue'
 import { gsap } from 'gsap'
@@ -105,20 +104,28 @@ export default {
     }
   },
   mounted() {
+    // ref class for programatical creaction
     this.instancesClasses.CstStation = Vue.extend(CstStation)
     this.instancesClasses.CstWare = Vue.extend(CstWare)
+
+    // ref stations container for injecting new elements
     this.stationsInitalEl = this.$refs.map.querySelector('.stations')
+
     this.setDestination()
+
+    // demo multipath, auto launch
     this.multiPath()
   },
   beforeDestroy() {
-    // this.tl.kill()
+    this.timeline.kill()
   },
   methods: {
     setDestination() {
       const destinations = [
         ...this.$refs.map.querySelector('.stations').children,
       ]
+
+      // add final stations components above the default ones
       destinations.forEach((station) => {
         const stationInstance = new this.instancesClasses.CstStation({
           propsData: {
@@ -143,29 +150,40 @@ export default {
     },
     multiPath() {
       this.removeCurrentWares()
+
+      // create timeline for the full animation
       this.timeline = gsap.timeline()
       this.timeline.addLabel('start')
       this.timeline.eventCallback('onUpdate', this.updateTimelineRange)
 
+      // get first station of the multi path demo
       const startStation = this.stations.find(
         (el) => el.name === this.multiPathDemo.start
       )
 
+      // create a register of all visited stations, to avoid firing several time the "arrived animation"
+      const visitedStation = []
+
+      // for each ware of the multi path demo
       this.multiPathDemo.wares.forEach((ware, i) => {
+        // create instace of ware object
         const wareInstance = new this.instancesClasses.CstWare()
         wareInstance.$mount()
         this.stationsInitalEl.after(wareInstance.$el)
         this.currentWares.push(wareInstance)
 
+        // initialize to first station position
         gsap.set(wareInstance.$el, {
           x: startStation.x - startStation.r + wareInstance.offsetX,
           y: startStation.y - startStation.r + wareInstance.offsetY,
           transformOrigin: 'center',
         })
 
+        // for each ware, create a timeline
         wareInstance.tl = gsap.timeline()
 
-        ware.forEach((step) => {
+        // for each steps of the ware, add a step in the timeline with motion path to next station
+        ware.forEach((step, j) => {
           const station = this.stations.find((el) => el.name === step)
 
           wareInstance.tl.to(wareInstance.$el, {
@@ -185,11 +203,25 @@ export default {
             delay: i * 0.1,
             ease: 'power4.inOut',
           })
+
+          // if current station isn't registered in the visited stations already, by another ware
+          if (visitedStation.find((el) => el === station.name) === undefined) {
+            // add the station to register
+            visitedStation.push(station.name)
+            // get animation timeline of the station
+            const stationArrivedTl = station.getArrivedTl()
+            // calculate delay to the start of the full animation
+            const stationArrivedTlDelay = wareInstance.tl.duration() - 0.5
+            // add the arrived animation to the main timeline, to avoid shifts in the animations of the ware
+            this.timeline.add(
+              stationArrivedTl,
+              'start+=' + stationArrivedTlDelay
+            )
+          }
         })
 
+        // add the ware timeline to the main timeline
         this.timeline.add(wareInstance.tl, 'start')
-
-        // TODO: ajouter toutes les timeslines à une master
       })
     },
     /* transport() {
@@ -229,11 +261,9 @@ export default {
 
 .controls {
   @apply w-1/3 border border-gray-200 p-12;
-  /*  @apply grid grid-cols-3 gap-4 grid-flow-col-dense mt-10; */
 
   &__btn {
     @apply bg-gray-700 text-white leading-none p-4;
-    /* align-self: end; */
   }
 }
 

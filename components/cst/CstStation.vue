@@ -1,5 +1,5 @@
 <template>
-  <g class="station">
+  <g ref="station" class="station">
     <circle
       cx="14"
       cy="14"
@@ -45,6 +45,11 @@ export default {
       default: 0,
     },
   },
+  data() {
+    return {
+      tlArrived: undefined,
+    }
+  },
   computed: {
     radius() {
       return (
@@ -63,6 +68,25 @@ export default {
         y: this.y - this.radius,
         transformOrigin: 'center',
       })
+    },
+    getArrivedTl() {
+      this.tlArrived = gsap
+        .timeline()
+        .to(this.$refs.station, {
+          scale: 2,
+          transformOrigin: 'center',
+          duration: 0.5,
+          ease: 'power4.inOut',
+        })
+        .to(this.$refs.station, {
+          scale: 1,
+          rotation: '+=360',
+          transformOrigin: 'center',
+          duration: 0.5,
+          ease: 'power4.inOut',
+        })
+
+      return this.tlArrived
     },
   },
 }
