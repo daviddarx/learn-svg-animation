@@ -1,5 +1,5 @@
 <template>
-  <g>
+  <g class="station">
     <circle
       cx="14"
       cy="14"
@@ -49,8 +49,7 @@ export default {
     radius() {
       return (
         parseFloat(this.$el.querySelector('.bg').getAttribute('r')) +
-        parseFloat(this.$el.querySelector('.bg').getAttribute('stroke-width')) *
-          0.5
+        parseFloat(this.$el.querySelector('.bg').getAttribute('stroke-width'))
       )
     },
   },

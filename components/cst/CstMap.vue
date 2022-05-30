@@ -117,7 +117,7 @@ export default {
           },
         })
         stationInstance.$mount()
-        // this.stationsInitalEl.after(stationInstance.$el)
+        this.stationsInitalEl.after(stationInstance.$el)
 
         this.stations.push(stationInstance)
       })
@@ -142,12 +142,9 @@ export default {
         this.stationsInitalEl.after(wareInstance.$el)
         this.currentWares.push(wareInstance)
 
-        const compensateX = 0 // 7
-        const compensateY = 0 // 3
-
         gsap.set(wareInstance.$el, {
-          x: startStation.x + compensateX,
-          y: startStation.y + compensateY,
+          x: startStation.x - startStation.r + wareInstance.offsetX,
+          y: startStation.y - startStation.r + wareInstance.offsetY,
           transformOrigin: 'center',
         })
 
@@ -156,27 +153,20 @@ export default {
         ware.forEach((step) => {
           const station = this.stations.find((el) => el.name === step)
 
-          console.log(
-            station.name,
-            station.x - station.r,
-            station.y - station.r
-          )
-
           wareInstance.tl.to(wareInstance.$el, {
             motionPath: {
               path: [
                 {
-                  x: station.x + compensateX,
-                  y: station.y + compensateY,
+                  x: station.x - station.r + wareInstance.offsetX,
+                  y: station.y - station.r + wareInstance.offsetY,
                 },
               ],
               curviness: 0,
-              align: 'self',
-              //alignOrigin: [0.5, 0.5],
+              alignOrigin: [0.5, 0.5],
               autoRotate: true,
             },
-            duration: 1, // pathes.length * 1,
             transformOrigin: 'center',
+            duration: 1,
             delay: i * 0.1,
             ease: 'power4.inOut',
           })
