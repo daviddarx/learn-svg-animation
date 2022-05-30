@@ -41,6 +41,17 @@
     </div>
 
     <div class="controls">
+      Timeline: <br />
+      <input
+        ref="timelineRange"
+        class="slider"
+        type="range"
+        min="1"
+        max="100"
+        value="0"
+        @input="rangeTimeline"
+      />
+      <br /><br />
       <button class="controls__btn" @click="multiPath">Test multi-path</button>
       <pre>{{ JSON.stringify(multiPathDemo, null, 4) }}</pre>
     </div>
@@ -90,7 +101,7 @@ export default {
           ['C', 'D', 'F'],
         ],
       },
-      mutliPathTl: undefined,
+      timeline: undefined,
     }
   },
   mounted() {
@@ -131,6 +142,9 @@ export default {
     },
     multiPath() {
       this.removeCurrentWares()
+      this.timeline = gsap.timeline()
+      this.timeline.addLabel('start')
+      this.timeline.eventCallback('onUpdate', this.updateTimelineRange)
 
       const startStation = this.stations.find(
         (el) => el.name === this.multiPathDemo.start
@@ -172,6 +186,8 @@ export default {
           })
         })
 
+        this.timeline.add(wareInstance.tl, 'start')
+
         // TODO: ajouter toutes les timeslines à une master
       })
     },
@@ -181,6 +197,14 @@ export default {
         this.message = 'No need to transport :-P'
       }
     }, */
+    rangeTimeline() {
+      this.timeline
+        .pause()
+        .seek((this.timeline.duration() * this.$refs.timelineRange.value) / 100)
+    },
+    updateTimelineRange() {
+      this.$refs.timelineRange.value = this.timeline.progress() * 100
+    },
   },
 }
 </script>

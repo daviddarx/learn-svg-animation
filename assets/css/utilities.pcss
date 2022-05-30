@@ -110,4 +110,21 @@
       @apply grid-cols-4;
     }
   }
+
+  .slider {
+    @apply h-px bg-black outline-none;
+
+    -webkit-appearance: none;
+
+    &::-webkit-slider-thumb {
+      @apply w-5 h-5 bg-black rounded-full cursor-pointer;
+
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    &::-moz-range-thumb {
+      @apply w-5 h-5 bg-black rounded-full shadow-none outline-none;
+    }
+  }
 }
