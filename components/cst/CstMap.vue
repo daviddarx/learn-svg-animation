@@ -105,8 +105,11 @@
 <script>
 import Vue from 'vue'
 import { gsap } from 'gsap'
+import { MotionPathPlugin } from 'gsap/dist/MotionPathPlugin.js'
 import CstStation from './CstStation'
 import CstWare from './CstWare'
+
+gsap.registerPlugin(MotionPathPlugin)
 
 export default {
   name: 'CstMap',
