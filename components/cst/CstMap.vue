@@ -55,7 +55,7 @@
       <div class="tabs">
         <div class="tabs__header">
           <button :class="{ active: tabsID == 0 }" @click="tabsID = 0">
-            Multiple-pathes
+            Multiple-path
           </button>
           <button
             :class="{ active: tabsID == 1 }"
@@ -70,7 +70,7 @@
         <div class="tabs__content">
           <div v-if="tabsID == 0">
             <button class="button" @click="multiPathes">
-              Test multiple-pathes
+              Test multiple-path
             </button>
             <pre>{{ JSON.stringify(multiPathesDemo, null, 4) }}</pre>
           </div>
