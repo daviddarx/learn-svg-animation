@@ -228,7 +228,7 @@ export default {
 <style lang="postcss" scoped>
 .test {
   @apply inline-block;
-  @apply w-16 h-16;
+  @apply w-[5vw] h-[5vw];
   @apply bg-black;
 }
 .clickable {
