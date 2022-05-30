@@ -248,7 +248,9 @@ export default {
         this.timeline.progress(1)
         this.timeline.kill()
       }
-      this.timeline = gsap.timeline()
+      this.timeline = gsap.timeline({
+        repeat: -1,
+      })
       this.timeline.addLabel('start')
       this.timeline.eventCallback('onUpdate', this.updateTimelineRange)
 
