@@ -82,7 +82,6 @@ export default {
         .to(this.$refs.star, {
           morphSVG: this.$refs.star,
           duration: 1,
-          type: 'rational',
           delay: 0.5,
           ease: 'power4.inOut',
         })
