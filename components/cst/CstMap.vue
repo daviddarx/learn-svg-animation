@@ -109,6 +109,7 @@ export default {
     this.instancesClasses.CstWare = Vue.extend(CstWare)
     this.stationsInitalEl = this.$refs.map.querySelector('.stations')
     this.setDestination()
+    this.multiPath()
   },
   beforeDestroy() {
     // this.tl.kill()
