@@ -12,6 +12,11 @@
       <AnimationSplitText />
       <AnimationSvgMorphes />
       <AnimationSvgClipPathes />
+      <AnimationVueTransition />
+      <AnimationVueTransitionMode />
+      <AnimationVueTransitionHooks />
+      <AnimationVueTransitionGroups />
+      <AnimationVueMouseMove />
     </div>
   </article>
 </template>
